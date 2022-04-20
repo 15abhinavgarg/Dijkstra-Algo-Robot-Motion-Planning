@@ -1,7 +1,16 @@
+'''
+Name : Abhinav Garg
+ENPM-661
+Planning for Autonomous Robots
+The below code is an intellectual property of Abhinav Garg
+'''
+
 import heapq as hq
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+
+###### Taking start and Goal coordinate ################
 
 def taking_inputs(img):
 
@@ -37,6 +46,7 @@ def taking_inputs(img):
     
     return xi,yi,xg,yg
 
+#######  Drawing obstacles in the Search space ########
 
 def draw_obstacles():
     data = np.zeros((250,400), dtype=np.uint8)
@@ -52,6 +62,7 @@ def draw_obstacles():
    
     return img
 
+############  Defining all the Action steps ############
 def allpossiblesteps(x,y):
     steps = []
     x_max = 250
@@ -116,8 +127,9 @@ def main():
     
     oq = {}
     oq[(xi,yi)] = [0,[-1,-1]]  #this can be treated as visited
-   
-    def backtrack(tup):
+    
+   ### This function executes when the goal node is found #####
+    def backtrack(tup):  
         
         x,y = tup
         ans = []
